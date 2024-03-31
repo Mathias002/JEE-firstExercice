@@ -1,8 +1,16 @@
 package fr.efrei.test.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class CreateStudent {
     
+    @NotBlank
+    @Size(min = 1, max = 25)
     private String name;
+    
+    @NotBlank
+    @Size(min = 1, max = 25)
     private String firstname;
 
     public CreateStudent(String name, String firstname){
