@@ -18,14 +18,14 @@ public class Promotion {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "promotion_id")
-	private List<Student> students = new ArrayList<>();
+	private Set<Student> students = new HashSet<>();
 
 
 	public String getName() {
 		return name;
 	}
 
-	public List<Student> getStudents() {
+	public Set<Student> getStudents() {
 		return students;
 	}
 
@@ -33,7 +33,7 @@ public class Promotion {
 		this.name = name;
 	}
 
-	public void setStudents(List<Student> students) {
+	public void setStudents(Set<Student> students) {
 		this.students = students;
 	}
 
