@@ -1,7 +1,8 @@
 package fr.efrei.test.repository;
 
+import fr.efrei.test.model.Promotion;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public class PromotionRepository {
-    
+public interface PromotionRepository extends JpaRepository<Promotion, String> {
+
 }

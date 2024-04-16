@@ -1,70 +1,43 @@
 package fr.efrei.test.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Promotion {
-    
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String uuid;
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private String uuid;
 
-    private String name;
+	private String name;
 
-    @OneToMany
-    private Set<Student> students = new HashSet<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "promotion_id")
+	private List<Student> students = new ArrayList<>();
 
 
-    
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * @return String return the uuid
-     */
-    public String getUuid() {
-        return uuid;
-    }
+	public List<Student> getStudents() {
+		return students;
+	}
 
-    /**
-     * @param uuid the uuid to set
-     */
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    /**
-     * @return String return the name
-     */
-    public String getName() {
-        return name;
-    }
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
 
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return Set<Student> return the students
-     */
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    /**
-     * @param students the students to set
-     */
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
-
+	public String getUuid() {
+		return uuid;
+	}
 }
